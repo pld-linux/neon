@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		Libraries
 Source0:	http://www.webdav.org/neon/%{name}-%{version}.tar.gz
+# Source0-md5:	b63b0430df64bb3c60b7fd0fc37d9004
 URL:		http://www.webdav.org/neon/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
