@@ -76,7 +76,7 @@ Statyczne biblioteki neon.
 %setup -q
 
 %build
-aclocal -I macros
+%{__aclocal} -I macros
 %{__autoconf}
 %configure \
 	--with-ssl \
