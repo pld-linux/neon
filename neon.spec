@@ -1,3 +1,5 @@
+# TODO:
+# - SECURITY: http://securitytracker.com/alerts/2004/Apr/1009794.html
 Summary:	An HTTP and WebDAV client library
 Summary(pl):	Biblioteka kliencka HTTP i WebDAV
 Name:		neon
