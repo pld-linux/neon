@@ -11,7 +11,7 @@ URL:		http://www.webdav.org/neon/
 BuildRequires:	expat-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	openssl-devel
-BuildRoot:      %{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 neon is an HTTP and WebDAV client library, with a C interface.
