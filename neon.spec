@@ -11,7 +11,7 @@ BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
 BuildRequires:	expat-devel
 BuildRequires:	libxml2-devel
-BuildRequires:	openssl-devel >= 0.9.6f
+BuildRequires:	openssl-devel >= 0.9.7
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
