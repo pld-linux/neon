@@ -106,16 +106,16 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS BUGS ChangeLog NEWS README THANKS TODO doc/*.txt doc/html/*
-%attr(755,root,root) %{_bindir}/neon-config
 %attr(755,root,root) %{_libdir}/*.so.*.*
-%{_mandir}/man*/*
 
 %files devel
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/neon-config
 %dir %{_includedir}/neon
 %{_includedir}/neon/*
 %{_libdir}/*.la
 %attr(755,root,root) %{_libdir}/*.so
+%{_mandir}/man*/*
 %{_pkgconfigdir}/neon.pc
 
 %files static
