@@ -1,16 +1,17 @@
 Summary:	An HTTP and WebDAV client library
 Summary(pl):	Biblioteka kliencka HTTP i WebDAV
 Name:		neon
-Version:	0.18.1
-Release:	2
+Version:	0.19.3
+Release:	1
 License:	GPL
 Group:		Libraries
 Source0:	http://www.webdav.org/neon/%{name}-%{version}.tar.gz
-Patch0:		%{name}-DESTDIR.patch
+Patch0:		%{name}-libxml2.patch
 URL:		http://www.webdav.org/neon/
 BuildRequires:	expat-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	openssl-devel
+BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -92,7 +93,7 @@ mv	doc/*.1	$RPM_BUILD_ROOT/%{_mandir}/man1/
 mv	doc/*.3	$RPM_BUILD_ROOT/%{_mandir}/man3/
 
 gzip -9nf AUTHORS BUGS ChangeLog NEWS README THANKS TODO \
-	doc/*.txt doc/*.ps doc/*.pdf doc/*.sgml doc/*.xml
+	doc/*.txt doc/*.pdf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
