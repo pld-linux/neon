@@ -81,7 +81,7 @@ Statyczne biblioteki neon.
 
 %build
 aclocal -I macros
-autoconf
+%{__autoconf}
 %configure \
 	--with-ssl \
 	--enable-shared \
