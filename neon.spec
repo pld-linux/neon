@@ -20,16 +20,16 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 neon is an HTTP and WebDAV client library, with a C interface.
 Featuring:
- - High-level interface to HTTP and WebDAV methods (PUT, GET, HEAD etc)
+ - High-level interface to HTTP and WebDAV methods (PUT, GET, HEAD etc).
  - Low-level interface to HTTP request handling, to allow implementing
    new methods easily.
- - HTTP/1.1 and HTTP/1.0 persistent connections
+ - HTTP/1.1 and HTTP/1.0 persistent connections.
  - RFC2617 basic and digest authentication (including auth-int,
-   md5-sess)
- - Proxy support (including basic/digest authentication)
- - Generic WebDAV 207 XML response handling mechanism
- - XML parsing using the expat or libxml parsers
- - Easy generation of error messages from 207 error responses
+   md5-sess).
+ - Proxy support (including basic/digest authentication).
+ - Generic WebDAV 207 XML response handling mechanism.
+ - XML parsing using the expat or libxml parsers.
+ - Easy generation of error messages from 207 error responses.
  - WebDAV resource manipulation: MOVE, COPY, DELETE, MKCOL.
  - WebDAV metadata support: set and remove properties, query any set of
    properties (PROPPATCH/PROPFIND).
@@ -37,16 +37,16 @@ Featuring:
 %description -l pl
 neon to biblioteka kliencka HTTP i WebDAV z interfejsem w C.
 Mo¿liwo¶ci:
- - wysokopoziomowy interfejs do metod HTTP i WebDAV (PUT, GET, HEAD...)
+ - wysokopoziomowy interfejs do metod HTTP i WebDAV (PUT, GET, HEAD...),
  - niskopziomowy interfejs to obs³ugi ¿±dañ HTTP pozwalaj±cy ³atwo
-   implementowaæ nowe metody
- - sta³e po³±czenia HTTP/1.1 i HTTP/1.0
- - autentykacja podstawowa i skrótem RFC-2617 (auth-int, md5-sess...)
- - obs³uga proxy (w tym autentykacja podstawowa i skrótem)
- - mechanizm obs³ugi odpowiedzi WebDAV 207 XML
- - parsowanie XML przy momocy expat lub libxml
- - proste generowanie komunikatów b³êdów dla odpowiedzi 207
- - manipulowanie zasobami WebDAV: MOVE, COPY, DELETE, MKCOL
+   implementowaæ nowe metody,
+ - sta³e po³±czenia HTTP/1.1 i HTTP/1.0,
+ - autentykacja podstawowa i skrótem RFC-2617 (auth-int, md5-sess...),
+ - obs³uga proxy (w tym autentykacja podstawowa i skrótem),
+ - mechanizm obs³ugi odpowiedzi WebDAV 207 XML,
+ - analiza sk³adniowa XML przy pomocy expat lub libxml,
+ - proste generowanie komunikatów b³êdów dla odpowiedzi 207,
+ - manipulowanie zasobami WebDAV: MOVE, COPY, DELETE, MKCOL,
  - obs³uga metadanych WebDAV: ustawianie i usuwanie atrybutów,
    sprawdzanie dowolnego zbioru atrybutów (PROPPATCH/PROPFIND).
 
