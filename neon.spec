@@ -1,13 +1,11 @@
 Summary:	An HTTP and WebDAV client library
 Summary(pl):	Biblioteka kliencka HTTP i WebDAV
 Name:		neon
-Version:	0.19.4
-Release:	2
+Version:	0.21.3
+Release:	1
 License:	GPL
 Group:		Libraries
 Source0:	http://www.webdav.org/neon/%{name}-%{version}.tar.gz
-Patch0:		%{name}-libxml2.patch
-Patch1:		%{name}-no-usr-include.patch
 URL:		http://www.webdav.org/neon/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
@@ -76,8 +74,6 @@ Statyczne biblioteki neon.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 aclocal -I macros
@@ -95,8 +91,8 @@ install -d $RPM_BUILD_ROOT{%{_prefix},%{_mandir}/man1,%{_mandir}/man3}
 
 %{__make} DESTDIR=$RPM_BUILD_ROOT install
 
-mv -f doc/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
-mv -f doc/*.3 $RPM_BUILD_ROOT%{_mandir}/man3
+mv -f doc/man/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
+mv -f doc/man/*.3 $RPM_BUILD_ROOT%{_mandir}/man3
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -106,7 +102,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS BUGS ChangeLog NEWS README THANKS TODO doc/*.txt doc/*.pdf doc/html/*
+%doc AUTHORS BUGS ChangeLog NEWS README THANKS TODO doc/*.txt doc/html/*
 %attr(755,root,root) %{_bindir}/neon-config
 %attr(755,root,root) %{_libdir}/*.so.*.*
 %{_mandir}/man*/*
