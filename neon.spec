@@ -15,9 +15,9 @@ Group(uk):	Б╕бл╕отеки
 Source0:	http://www.webdav.org/neon/%{name}-%{version}.tar.gz
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://www.webdav.org/neon/
-BuildRequires:	openssl-devel
 BuildRequires:	expat-devel
 BuildRequires:	libxml2-devel
+BuildRequires:	openssl-devel
 BuildRoot:      %{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -97,8 +97,6 @@ Statyczne biblioteki neon.
 
 %build
 %configure \
-	--prefix=%{_prefix} \
-	--sysconfdir=%{_sysconfdir} \
 	--with-ssl \
 	--enable-shared \
 	--with-libxml2
