@@ -111,7 +111,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %dir %{_includedir}/neon
 %{_includedir}/neon/*
-%attr(755,root,root) %{_libdir}/*.la
+%{_libdir}/*.la
 %attr(755,root,root) %{_libdir}/*.so
 
 %files static
