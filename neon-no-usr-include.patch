@@ -1,0 +1,14 @@
+diff -ur neon-0.19.3-/macros/neon-ssl.m4 neon-0.19.3/macros/neon-ssl.m4
+--- neon-0.19.3-/macros/neon-ssl.m4	Fri Jan  4 00:55:14 2002
++++ neon-0.19.3/macros/neon-ssl.m4	Fri Apr 12 12:19:28 2002
+@@ -50,7 +50,9 @@
+ fi
+ 
+ if test -n "$neon_ssl_location"; then
+-	CFLAGS="$CFLAGS -I${neon_ssl_location}/include"
++	if test "${neon_ssl_location}" != /usr ; then
++		CFLAGS="$CFLAGS -I/include"
++	fi
+ 	NEON_LIBS="$NEON_LIBS -L${neon_ssl_location}/lib -lssl -lcrypto"
+ 	AC_DEFINE([ENABLE_SSL], 1, [Define to enable OpenSSL support])
+ 	AC_MSG_RESULT(found in $neon_ssl_location)
