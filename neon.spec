@@ -13,7 +13,7 @@ Group(pt_BR):	Bibliotecas
 Group(ru):	‚…¬Ã…œ‘≈À…
 Group(uk):	‚¶¬Ã¶œ‘≈À…
 Source0:	http://www.webdav.org/neon/%{name}-%{version}.tar.gz
-URL:		http://www.webdav.org/neon
+URL:		http://www.webdav.org/neon/
 BuildRequires:	openssl-devel
 BuildRequires:	expat-devel
 BuildRoot:      %{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -35,8 +35,25 @@ Featuring:
  - WebDAV metadata support: set and remove properties, query any set of
    properties (PROPPATCH/PROPFIND).
 
-%package	devel
-Summary:	Static Libraries and header files for neon
+%description -l pl
+neon to biblioteka kliencka HTTP i WebDAV z interfejsem w C.
+Moøliwo∂ci:
+ - wysokopoziomowy interfejs do metod HTTP i WebDAV (PUT, GET, HEAD...)
+ - niskopziomowy interfejs to obs≥ugi ø±daÒ HTTP pozwalaj±cy ≥atwo
+   implementowaÊ nowe metody
+ - sta≥e po≥±czenia HTTP/1.1 i HTTP/1.0
+ - autentykacja podstawowa i skrÛtem RFC-2617 (auth-int, md5-sess...)
+ - obs≥uga proxy (w tym autentykacja podstawowa i skrÛtem)
+ - mechanizm obs≥ugi odpowiedzi WebDAV 207 XML
+ - parsowanie XML przy momocy expat lub libxml
+ - proste generowanie komunikatÛw b≥ÍdÛw dla odpowiedzi 207
+ - manipulowanie zasobami WebDAV: MOVE, COPY, DELETE, MKCOL
+ - obs≥uga metadanych WebDAV: ustawianie i usuwanie atrybutÛw,
+   sprawdzanie dowolnego zbioru atrybutÛw (PROPPATCH/PROPFIND).
+
+%package devel
+Summary:	Header files for neon
+Summary(pl):	Pliki nag≥Ûwkowe neon
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
 Group(es):	Desarrollo/Bibliotecas
@@ -45,10 +62,32 @@ Group(pl):	Programowanie/Biblioteki
 Group(pt_BR):	Desenvolvimento/Bibliotecas
 Group(ru):	Ú¡⁄“¡¬œ‘À¡/‚…¬Ã…œ‘≈À…
 Group(uk):	Úœ⁄“œ¬À¡/‚¶¬Ã¶œ‘≈À…
-#Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}
 
-%description	devel
-Static libraries and C header files for the neon library.
+%description devel
+C header files for the neon library.
+
+%description devel -l pl
+Pliki nag≥Ûwkowe dla biblioteki neon.
+
+%package static
+Summary:	Static libraries for neon
+Summary(pl):	Biblioteki statyczne neon
+Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	Ú¡⁄“¡¬œ‘À¡/‚…¬Ã…œ‘≈À…
+Group(uk):	Úœ⁄“œ¬À¡/‚¶¬Ã¶œ‘≈À…
+Requires:	%{name}-devel = %{version}
+
+%description static
+Static neon libraries.
+
+%description static -l pl
+Statyczne biblioteki neon.
 
 %prep
 %setup -q
@@ -59,8 +98,8 @@ Static libraries and C header files for the neon library.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-[ -d $RPM_BUILD_ROOT] && rm -rf $RPM_BUILD_ROOT;
 install -d $RPM_BUILD_ROOT%{_prefix}
+
 %{__make} prefix=$RPM_BUILD_ROOT%{_prefix} install
 
 gzip -9nf AUTHORS BUGS ChangeLog NEWS README THANKS TODO doc/*
@@ -68,18 +107,21 @@ gzip -9nf AUTHORS BUGS ChangeLog NEWS README THANKS TODO doc/*
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post
-/sbin/ldconfig
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS.gz BUGS.gz ChangeLog.gz NEWS.gz README.gz THANKS.gz TODO.gz doc/*
 %attr(755,root,root) %{_bindir}/neon-config
-%{_libdir}/*.so*
+%attr(755,root,root) %{_libdir}/*.so*
 
 %files devel
 %defattr(644,root,root,755)
 %{_includedir}/neon
+%attr(755,root,root) %{_libdir}/*.la
+%attr(755,root,root) %{_libdir}/*.so
+
+%files static
+%defattr(644,root,root,755)
 %{_libdir}/*.a
-%{_libdir}/*.la
-%{_libdir}/*.so
