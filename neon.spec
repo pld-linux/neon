@@ -13,7 +13,7 @@ BuildRequires:	automake
 BuildRequires:	expat-devel
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
-BuildRequires:	openssl-devel >= 0.9.6k
+BuildRequires:	openssl-devel >= 0.9.6m
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
