@@ -2,7 +2,7 @@ Summary:	An HTTP and WebDAV client library
 Summary(pl):	Biblioteka kliencka HTTP i WebDAV
 Name:		neon
 Version:	0.17.2
-Release:	1
+Release:	2
 License:	GPL
 Group:		Libraries
 Group(de):	Libraries
@@ -13,9 +13,11 @@ Group(pt_BR):	Bibliotecas
 Group(ru):	Библиотеки
 Group(uk):	Б╕бл╕отеки
 Source0:	http://www.webdav.org/neon/%{name}-%{version}.tar.gz
+Patch0:		%{name}-DESTDIR.patch
 URL:		http://www.webdav.org/neon/
 BuildRequires:	openssl-devel
 BuildRequires:	expat-devel
+BuildRequires:	libxml2-devel
 BuildRoot:      %{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -91,16 +93,23 @@ Statyczne biblioteki neon.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
-./configure --prefix=%{_prefix} --sysconfdir=%{_sysconfdir} --with-ssl --enable-shared
+%configure \
+	--prefix=%{_prefix} \
+	--sysconfdir=%{_sysconfdir} \
+	--with-ssl \
+	--enable-shared \
+	--with-libxml2
+
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_prefix}
 
-%{__make} prefix=$RPM_BUILD_ROOT%{_prefix} install
+%{__make} prefix=$RPM_BUILD_ROOT%{_prefix} DESTDIR=$RPM_BUILD_ROOT install
 
 gzip -9nf AUTHORS BUGS ChangeLog NEWS README THANKS TODO doc/*
 
@@ -112,7 +121,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS.gz BUGS.gz ChangeLog.gz NEWS.gz README.gz THANKS.gz TODO.gz doc/*
+%doc *.gz doc/*.gz
 %attr(755,root,root) %{_bindir}/neon-config
 %attr(755,root,root) %{_libdir}/*.so*
 
