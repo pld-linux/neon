@@ -13,7 +13,7 @@ BuildRequires:	automake
 BuildRequires:	expat-devel
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
-BuildRequires:	openssl-devel >= 0.9.7
+BuildRequires:	openssl-devel >= 0.9.7c
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -56,7 +56,7 @@ Summary(pl):	Pliki nag³ówkowe neon
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
 Requires:	libxml2-devel
-Requires:	openssl-devel >= 0.9.7
+Requires:	openssl-devel >= 0.9.7c
 
 %description devel
 C header files for the neon library.
