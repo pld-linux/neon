@@ -1,0 +1,29 @@
+--- ./Makefile.in.org	Sun Oct  7 21:16:29 2001
++++ ./Makefile.in	Fri Dec  7 00:06:29 2001
+@@ -79,18 +79,18 @@
+ 
+ # libtool does all the necessary magic here
+ install-lib: src/libneon.la
+-	$(INSTALL) -d $(libdir)
+-	$(LIBTOOL) --mode=install $(INSTALL) src/libneon.la $(libdir)/libneon.la
++	$(INSTALL) -d $(DESTDIR)$(libdir)
++	$(LIBTOOL) --mode=install $(INSTALL) src/libneon.la $(DESTDIR)$(libdir)/libneon.la
+ 
+ install-headers:
+-	$(INSTALL) -d $(neonincludes)
++	$(INSTALL) -d $(DESTDIR)$(neonincludes)
+ 	@for h in $(DIST_HEADERS); do \
+-		echo Installing $$h into $(neonincludes); \
+-		$(INSTALL_DATA) $(srcdir)/src/$$h $(neonincludes)/$$h || exit 1; \
++		echo Installing $$h into $(DESTDIR)$(neonincludes); \
++		$(INSTALL_DATA) $(srcdir)/src/$$h $(DESTDIR)$(neonincludes)/$$h || exit 1; \
+ 	done
+ 
+ install-config:
+-	$(INSTALL) -d $(bindir)
+-	@echo Installing neon-config into $(bindir)
+-	@$(INSTALL_SCRIPT) neon-config $(bindir)/`echo neon-config|sed '$(transform)'`
++	$(INSTALL) -d $(DESTDIR)$(bindir)
++	@echo Installing neon-config into $(DESTDIR)$(bindir)
++	@$(INSTALL_SCRIPT) neon-config $(DESTDIR)$(bindir)/`echo neon-config|sed '$(transform)'`
+ 
