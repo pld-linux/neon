@@ -10,11 +10,10 @@ Source0:	http://www.webdav.org/neon/%{name}-%{version}.tar.gz
 URL:		http://www.webdav.org/neon/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
-BuildRequires:	expat-devel
+BuildRequires:	heimdal-devel >= 0.6-5
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	openssl-devel >= 0.9.7c
-BuildRequires:	heimdal-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -56,6 +55,7 @@ Summary:	Header files for neon
 Summary(pl):	Pliki nag³ówkowe neon
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
+Requires:	heimdal-devel >= 0.6-5
 Requires:	libxml2-devel
 Requires:	openssl-devel >= 0.9.7c
 
@@ -117,8 +117,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/neon-config
 %attr(755,root,root) %{_libdir}/*.so
 %{_libdir}/*.la
-%dir %{_includedir}/neon
-%{_includedir}/neon/*
+%{_includedir}/neon
 %{_mandir}/man*/*
 %{_pkgconfigdir}/neon.pc
 
