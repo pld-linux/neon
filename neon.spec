@@ -55,6 +55,8 @@ Summary:	Header files for neon
 Summary(pl):	Pliki nag³ówkowe neon
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
+Requires:	libxml2-devel
+Requires:	openssl-devel >= 0.9.7
 
 %description devel
 C header files for the neon library.
