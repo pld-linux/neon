@@ -1,12 +1,12 @@
 Summary:	An HTTP and WebDAV client library
 Summary(pl):	Biblioteka kliencka HTTP i WebDAV
 Name:		neon
-Version:	0.24.0
+Version:	0.24.1
 Release:	1
 License:	GPL
 Group:		Libraries
 Source0:	http://www.webdav.org/neon/%{name}-%{version}.tar.gz
-# Source0-md5:	584bf0724dd3c616ab09f4fea21798f6
+# Source0-md5:	08773a63fc742da7a552eaf25a435890
 URL:		http://www.webdav.org/neon/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
@@ -94,7 +94,8 @@ Statyczne biblioteki neon.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_prefix},%{_mandir}/man1,%{_mandir}/man3}
 
-%{__make} DESTDIR=$RPM_BUILD_ROOT install
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 mv -f doc/man/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
 mv -f doc/man/*.3 $RPM_BUILD_ROOT%{_mandir}/man3
@@ -113,10 +114,10 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/neon-config
+%attr(755,root,root) %{_libdir}/*.so
+%{_libdir}/*.la
 %dir %{_includedir}/neon
 %{_includedir}/neon/*
-%{_libdir}/*.la
-%attr(755,root,root) %{_libdir}/*.so
 %{_mandir}/man*/*
 %{_pkgconfigdir}/neon.pc
 
