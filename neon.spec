@@ -7,11 +7,14 @@ License:	GPL
 Group:		Libraries
 Source0:	http://www.webdav.org/neon/%{name}-%{version}.tar.gz
 Patch0:		%{name}-libxml2.patch
+Patch1:		%{name}-no-usr-include.patch
 URL:		http://www.webdav.org/neon/
 BuildRequires:	expat-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	openssl-devel
 BuildRequires:	zlib-devel
+BuildRequires:	autoconf >= 2.53
+BuildRequires:	automake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -74,8 +77,11 @@ Statyczne biblioteki neon.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
+aclocal -I macros
+autoconf
 %configure \
 	--with-ssl \
 	--enable-shared \
