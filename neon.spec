@@ -2,7 +2,7 @@ Summary:	An HTTP and WebDAV client library
 Summary(pl):	Biblioteka kliencka HTTP i WebDAV
 Name:		neon
 Version:	0.18.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		Libraries
 Group(de):	Libraries
@@ -105,11 +105,15 @@ Statyczne biblioteki neon.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_prefix}
+install -d $RPM_BUILD_ROOT{%{_prefix},%{_mandir}/man1,%{_mandir}/man3}
 
-%{__make} prefix=$RPM_BUILD_ROOT%{_prefix} DESTDIR=$RPM_BUILD_ROOT install
+%{__make} DESTDIR=$RPM_BUILD_ROOT install
 
-gzip -9nf AUTHORS BUGS ChangeLog NEWS README THANKS TODO doc/*
+mv	doc/*.1	$RPM_BUILD_ROOT/%{_mandir}/man1/
+mv	doc/*.3	$RPM_BUILD_ROOT/%{_mandir}/man3/
+
+gzip -9nf AUTHORS BUGS ChangeLog NEWS README THANKS TODO \
+	doc/*.txt doc/*.ps doc/*.pdf doc/*.sgml doc/*.xml
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -119,13 +123,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz doc/*.gz
+%doc *.gz doc/*.gz doc/html/*
 %attr(755,root,root) %{_bindir}/neon-config
 %attr(755,root,root) %{_libdir}/*.so*
+%{_mandir}/man*/*
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/neon
+%dir %{_includedir}/neon
+%{_includedir}/neon/*
 %attr(755,root,root) %{_libdir}/*.la
 %attr(755,root,root) %{_libdir}/*.so
 
