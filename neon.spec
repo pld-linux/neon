@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	static_libs	# don't build static libraries
+#
 Summary:	An HTTP and WebDAV client library
 Summary(pl):	Biblioteka kliencka HTTP i WebDAV
 Name:		neon
@@ -87,6 +91,7 @@ Statyczne biblioteki neon.
 %configure \
 	--with-ssl \
 	--enable-shared \
+	%{!?with_static_libs:--enable-static=no} \
 	--with-libxml2
 
 %{__make}
@@ -121,6 +126,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man*/*
 %{_pkgconfigdir}/neon.pc
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/*.a
+%endif
