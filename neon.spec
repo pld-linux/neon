@@ -93,7 +93,7 @@ Statyczne biblioteki neon.
 	--with-ssl \
 	--enable-shared \
 	%{!?with_static_libs:--enable-static=no} \
-	%{!?with_krb:--disable-gssapi} \
+	%{!?with_krb:--without-gssapi} \
 	--with-libxml2
 
 %{__make}
