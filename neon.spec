@@ -6,12 +6,12 @@
 Summary:	An HTTP and WebDAV client library
 Summary(pl):	Biblioteka kliencka HTTP i WebDAV
 Name:		neon
-Version:	0.25.5
-Release:	1.1
+Version:	0.26.0
+Release:	1
 License:	GPL
 Group:		Libraries
 Source0:	http://www.webdav.org/neon/%{name}-%{version}.tar.gz
-# Source0-md5:	b5fdb71dd407f0a3de0f267d27c9ab17
+# Source0-md5:	076072f11c5278f4c4b7de189ea1506e
 URL:		http://www.webdav.org/neon/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
@@ -108,13 +108,15 @@ install -d $RPM_BUILD_ROOT{%{_prefix},%{_mandir}/man1,%{_mandir}/man3}
 mv -f doc/man/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
 mv -f doc/man/*.3 $RPM_BUILD_ROOT%{_mandir}/man3
 
+%find_lang %{name}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS BUGS ChangeLog NEWS README THANKS TODO doc/*.txt doc/html/*
 %attr(755,root,root) %{_libdir}/*.so.*.*
