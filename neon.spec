@@ -7,7 +7,7 @@ Summary:	An HTTP and WebDAV client library
 Summary(pl):	Biblioteka kliencka HTTP i WebDAV
 Name:		neon
 Version:	0.26.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		Libraries
 Source0:	http://www.webdav.org/neon/%{name}-%{version}.tar.gz
