@@ -1,6 +1,7 @@
 #
 # Conditional build:
 %bcond_without	static_libs	# don't build static libraries
+%bcond_without	krb		# don't build krb support
 #
 Summary:	An HTTP and WebDAV client library
 Summary(pl):	Biblioteka kliencka HTTP i WebDAV
@@ -14,7 +15,7 @@ Source0:	http://www.webdav.org/neon/%{name}-%{version}.tar.gz
 URL:		http://www.webdav.org/neon/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
-BuildRequires:	heimdal-devel >= 0.7
+%{?with_krb:BuildRequires:	heimdal-devel >= 0.7}
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	openssl-devel >= 0.9.7d
@@ -59,7 +60,7 @@ Summary:	Header files for neon
 Summary(pl):	Pliki nag³ówkowe neon
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	heimdal-devel >= 0.6-5
+%{?with_krb:Requires:	heimdal-devel >= 0.6-5}
 Requires:	libxml2-devel
 Requires:	openssl-devel >= 0.9.7c
 
@@ -92,6 +93,7 @@ Statyczne biblioteki neon.
 	--with-ssl \
 	--enable-shared \
 	%{!?with_static_libs:--enable-static=no} \
+	%{!?with_krb:--without-gssapi} \
 	--with-libxml2
 
 %{__make}
