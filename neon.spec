@@ -4,7 +4,7 @@
 %bcond_without	krb		# don't build krb support
 #
 Summary:	An HTTP and WebDAV client library
-Summary(pl):	Biblioteka kliencka HTTP i WebDAV
+Summary(pl.UTF-8):   Biblioteka kliencka HTTP i WebDAV
 Name:		neon
 Version:	0.26.3
 Release:	1
@@ -39,25 +39,25 @@ Featuring:
  - WebDAV metadata support: set and remove properties, query any set of
    properties (PROPPATCH/PROPFIND).
 
-%description -l pl
+%description -l pl.UTF-8
 neon to biblioteka kliencka HTTP i WebDAV z interfejsem w C.
-Moøliwo∂ci:
+Mo≈ºliwo≈õci:
  - wysokopoziomowy interfejs do metod HTTP i WebDAV (PUT, GET, HEAD...),
- - niskopziomowy interfejs to obs≥ugi ø±daÒ HTTP pozwalaj±cy ≥atwo
-   implementowaÊ nowe metody,
- - sta≥e po≥±czenia HTTP/1.1 i HTTP/1.0,
- - autentykacja podstawowa i skrÛtem RFC-2617 (auth-int, md5-sess...),
- - obs≥uga proxy (w tym autentykacja podstawowa i skrÛtem),
- - mechanizm obs≥ugi odpowiedzi WebDAV 207 XML,
- - analiza sk≥adniowa XML przy pomocy expat lub libxml,
- - proste generowanie komunikatÛw b≥ÍdÛw dla odpowiedzi 207,
+ - niskopziomowy interfejs to obs≈Çugi ≈ºƒÖda≈Ñ HTTP pozwalajƒÖcy ≈Çatwo
+   implementowaƒá nowe metody,
+ - sta≈Çe po≈ÇƒÖczenia HTTP/1.1 i HTTP/1.0,
+ - autentykacja podstawowa i skr√≥tem RFC-2617 (auth-int, md5-sess...),
+ - obs≈Çuga proxy (w tym autentykacja podstawowa i skr√≥tem),
+ - mechanizm obs≈Çugi odpowiedzi WebDAV 207 XML,
+ - analiza sk≈Çadniowa XML przy pomocy expat lub libxml,
+ - proste generowanie komunikat√≥w b≈Çƒôd√≥w dla odpowiedzi 207,
  - manipulowanie zasobami WebDAV: MOVE, COPY, DELETE, MKCOL,
- - obs≥uga metadanych WebDAV: ustawianie i usuwanie atrybutÛw,
-   sprawdzanie dowolnego zbioru atrybutÛw (PROPPATCH/PROPFIND).
+ - obs≈Çuga metadanych WebDAV: ustawianie i usuwanie atrybut√≥w,
+   sprawdzanie dowolnego zbioru atrybut√≥w (PROPPATCH/PROPFIND).
 
 %package devel
 Summary:	Header files for neon
-Summary(pl):	Pliki nag≥Ûwkowe neon
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe neon
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 %{?with_krb:Requires:	heimdal-devel >= 0.6-5}
@@ -67,19 +67,19 @@ Requires:	openssl-devel >= 0.9.7c
 %description devel
 C header files for the neon library.
 
-%description devel -l pl
-Pliki nag≥Ûwkowe dla biblioteki neon.
+%description devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe dla biblioteki neon.
 
 %package static
 Summary:	Static libraries for neon
-Summary(pl):	Biblioteki statyczne neon
+Summary(pl.UTF-8):   Biblioteki statyczne neon
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static neon libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczne biblioteki neon.
 
 %prep
