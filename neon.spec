@@ -4,7 +4,7 @@
 %bcond_without	krb		# don't build krb support
 #
 Summary:	An HTTP and WebDAV client library
-Summary(pl.UTF-8):   Biblioteka kliencka HTTP i WebDAV
+Summary(pl.UTF-8):	Biblioteka kliencka HTTP i WebDAV
 Name:		neon
 Version:	0.26.3
 Release:	1
@@ -57,7 +57,7 @@ Możliwości:
 
 %package devel
 Summary:	Header files for neon
-Summary(pl.UTF-8):   Pliki nagłówkowe neon
+Summary(pl.UTF-8):	Pliki nagłówkowe neon
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 %{?with_krb:Requires:	heimdal-devel >= 0.6-5}
@@ -72,7 +72,7 @@ Pliki nagłówkowe dla biblioteki neon.
 
 %package static
 Summary:	Static libraries for neon
-Summary(pl.UTF-8):   Biblioteki statyczne neon
+Summary(pl.UTF-8):	Biblioteki statyczne neon
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
