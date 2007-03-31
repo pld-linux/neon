@@ -1,13 +1,13 @@
 #
 # Conditional build:
 %bcond_without	static_libs	# don't build static libraries
-%bcond_without	krb		# don't build krb support
+%bcond_without	kerberos5	# don't build Kerberos V support
 #
 Summary:	An HTTP and WebDAV client library
 Summary(pl.UTF-8):	Biblioteka kliencka HTTP i WebDAV
 Name:		neon
 Version:	0.26.3
-Release:	1
+Release:	2
 License:	GPL
 Group:		Libraries
 Source0:	http://www.webdav.org/neon/%{name}-%{version}.tar.gz
@@ -15,7 +15,7 @@ Source0:	http://www.webdav.org/neon/%{name}-%{version}.tar.gz
 URL:		http://www.webdav.org/neon/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
-%{?with_krb:BuildRequires:	heimdal-devel >= 0.7}
+%{?with_kerberos5:BuildRequires:	krb5-devel}
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	openssl-devel >= 0.9.7d
@@ -60,7 +60,7 @@ Summary:	Header files for neon
 Summary(pl.UTF-8):	Pliki nagłówkowe neon
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-%{?with_krb:Requires:	heimdal-devel >= 0.6-5}
+%{?with_kerberos5:Requires:	krb5-devel}
 Requires:	libxml2-devel
 Requires:	openssl-devel >= 0.9.7c
 
@@ -93,7 +93,7 @@ Statyczne biblioteki neon.
 	--with-ssl \
 	--enable-shared \
 	%{!?with_static_libs:--enable-static=no} \
-	%{!?with_krb:--without-gssapi} \
+	%{!?with_kerberos5:--without-gssapi} \
 	--with-libxml2
 
 %{__make}
