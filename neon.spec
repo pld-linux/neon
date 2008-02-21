@@ -8,12 +8,12 @@ Summary(pl.UTF-8):	Biblioteka kliencka HTTP i WebDAV
 Name:		neon
 Version:	0.28.0
 Release:	1
-License:	GPL
+License:	LGPL v2+
 Group:		Libraries
 Source0:	http://www.webdav.org/neon/%{name}-%{version}.tar.gz
 # Source0-md5:	9d938e1e46003cae11d9e6f596da8c95
 URL:		http://www.webdav.org/neon/
-BuildRequires:	autoconf >= 2.53
+BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake
 %{?with_kerberos5:BuildRequires:	krb5-devel}
 BuildRequires:	libtool
@@ -121,19 +121,22 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS BUGS ChangeLog NEWS README THANKS TODO doc/*.txt doc/html/*
-%attr(755,root,root) %{_libdir}/*.so.*.*
+%attr(755,root,root) %{_libdir}/libneon.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libneon.so.27
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/neon-config
-%attr(755,root,root) %{_libdir}/*.so
-%{_libdir}/*.la
+%attr(755,root,root) %{_libdir}/libneon.so
+%{_libdir}/libneon.la
 %{_includedir}/neon
-%{_mandir}/man*/*
 %{_pkgconfigdir}/neon.pc
+%{_mandir}/man1/neon-config.1*
+%{_mandir}/man3/ne_*.3*
+%{_mandir}/man3/neon.3*
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/*.a
+%{_libdir}/libneon.a
 %endif
