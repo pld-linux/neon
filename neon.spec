@@ -16,7 +16,7 @@ URL:		http://www.webdav.org/neon/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake
 %{?with_kerberos5:BuildRequires:	krb5-devel}
-BuildRequires:	libtool
+BuildRequires:	libtool >= 2.2
 BuildRequires:	libxml2-devel
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	zlib-devel
@@ -86,7 +86,7 @@ Statyczne biblioteki neon.
 %setup -q
 
 %build
-%{__libtoolize}
+%{__libtoolize} --install
 %{__aclocal} -I macros
 %{__autoconf}
 %configure \
