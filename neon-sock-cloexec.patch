@@ -1,0 +1,11 @@
+--- neon-0.28.4/src/ne_socket.c.org	2009-03-19 08:46:03.086665679 +0100
++++ neon-0.28.4/src/ne_socket.c	2009-03-19 08:52:50.236710428 +0100
+@@ -1209,6 +1209,8 @@
+     /* use SOCK_STREAM rather than ai_socktype: some getaddrinfo
+      * implementations do not set ai_socktype, e.g. RHL6.2. */
+     fd = socket(ia_family(addr), SOCK_STREAM | SOCK_CLOEXEC, ia_proto(addr));
++    if (fd < 0 && errno == EINVAL)
++	    fd = socket(ia_family(addr), SOCK_STREAM, ia_proto(addr));
+     if (fd < 0) {
+         set_strerror(sock, ne_errno);
+ 	return -1;
