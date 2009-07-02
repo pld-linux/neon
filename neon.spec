@@ -7,7 +7,7 @@ Summary:	An HTTP and WebDAV client library
 Summary(pl.UTF-8):	Biblioteka kliencka HTTP i WebDAV
 Name:		neon
 Version:	0.28.4
-Release:	3
+Release:	4
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://www.webdav.org/neon/%{name}-%{version}.tar.gz
@@ -16,7 +16,7 @@ Patch0:		%{name}-sock-cloexec.patch
 URL:		http://www.webdav.org/neon/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake
-%{?with_kerberos5:BuildRequires:	krb5-devel}
+%{?with_kerberos5:BuildRequires:	heimdal-devel}
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel
 BuildRequires:	openssl-devel >= 0.9.7d
@@ -61,7 +61,7 @@ Summary:	Header files for neon
 Summary(pl.UTF-8):	Pliki nagłówkowe neon
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-%{?with_kerberos5:Requires:	krb5-devel}
+%{?with_kerberos5:Requires:	heimdal-devel}
 Requires:	libxml2-devel
 Requires:	openssl-devel >= 0.9.7c
 
