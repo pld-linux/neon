@@ -43,11 +43,12 @@ Featuring:
 neon to biblioteka kliencka HTTP i WebDAV z interfejsem w C.
 Możliwości:
  - wysokopoziomowy interfejs do metod HTTP i WebDAV (PUT, GET, HEAD...),
- - niskopziomowy interfejs do obsługi żądań HTTP pozwalający łatwo
+ - niskopoziomowy interfejs do obsługi żądań HTTP pozwalający łatwo
    implementować nowe metody,
  - stałe połączenia HTTP/1.1 i HTTP/1.0,
- - autentykacja podstawowa i skrótem RFC-2617 (auth-int, md5-sess...),
- - obsługa proxy (w tym autentykacja podstawowa i skrótem),
+ - uwierzytelnianie podstawowe (basic) i skrótem RFC-2617 (auth-int,
+   md5-sess...),
+ - obsługa proxy (w tym uwierzytelnianie podstawowe i skrótem),
  - mechanizm obsługi odpowiedzi WebDAV 207 XML,
  - analiza składniowa XML przy pomocy expat lub libxml,
  - proste generowanie komunikatów błędów dla odpowiedzi 207,
