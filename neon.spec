@@ -16,7 +16,7 @@ URL:		http://www.webdav.org/neon/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake
 %{?with_kerberos5:BuildRequires:	heimdal-devel}
-BuildRequires:	libproxy
+BuildRequires:	libproxy-devel
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel
 BuildRequires:	openssl-devel >= 0.9.7d
