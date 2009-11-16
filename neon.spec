@@ -2,6 +2,7 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static libraries
 %bcond_without	kerberos5	# don't build Kerberos V support
+%bcond_without	libproxy	# don't build libproxy support
 #
 Summary:	An HTTP and WebDAV client library
 Summary(pl.UTF-8):	Biblioteka kliencka HTTP i WebDAV
@@ -16,7 +17,7 @@ URL:		http://www.webdav.org/neon/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake
 %{?with_kerberos5:BuildRequires:	heimdal-devel}
-BuildRequires:	libproxy-devel
+%{?with_libproxy:BuildRequires:	libproxy-devel}
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel
 BuildRequires:	openssl-devel >= 0.9.7d
@@ -97,6 +98,7 @@ Statyczne biblioteki neon.
 	--enable-shared \
 	%{!?with_static_libs:--enable-static=no} \
 	%{!?with_kerberos5:--without-gssapi} \
+	%{!?with_libproxy:--without-libproxy} \
 	--with-libxml2
 
 %{__make}
