@@ -21,6 +21,7 @@ BuildRequires:	automake
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel
 BuildRequires:	openssl-devel >= 0.9.7d
+BuildRequires:	pkgconfig
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
