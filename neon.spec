@@ -7,12 +7,12 @@
 Summary:	An HTTP and WebDAV client library
 Summary(pl.UTF-8):	Biblioteka kliencka HTTP i WebDAV
 Name:		neon
-Version:	0.29.4
-Release:	2
+Version:	0.29.5
+Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://www.webdav.org/neon/%{name}-%{version}.tar.gz
-# Source0-md5:	29438dbdaee84db2d7fbc73248a92d93
+# Source0-md5:	ff369e69ef0f0143beb5626164e87ae2
 URL:		http://www.webdav.org/neon/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake
@@ -28,7 +28,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 neon is an HTTP and WebDAV client library, with a C interface.
 Featuring:
- - High-level interface to HTTP and WebDAV methods (PUT, GET, HEAD etc).
+ - High-level interface to HTTP and WebDAV methods (PUT, GET, HEAD
+   etc).
  - Low-level interface to HTTP request handling, to allow implementing
    new methods easily.
  - HTTP/1.1 and HTTP/1.0 persistent connections.
@@ -45,7 +46,8 @@ Featuring:
 %description -l pl.UTF-8
 neon to biblioteka kliencka HTTP i WebDAV z interfejsem w C.
 Możliwości:
- - wysokopoziomowy interfejs do metod HTTP i WebDAV (PUT, GET, HEAD...),
+ - wysokopoziomowy interfejs do metod HTTP i WebDAV (PUT, GET,
+   HEAD...),
  - niskopoziomowy interfejs do obsługi żądań HTTP pozwalający łatwo
    implementować nowe metody,
  - stałe połączenia HTTP/1.1 i HTTP/1.0,
