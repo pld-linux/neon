@@ -1,9 +1,10 @@
 #
 # Conditional build:
+%bcond_without	apidocs		# do not build and package API docs
 %bcond_without	static_libs	# don't build static libraries
 %bcond_without	kerberos5	# don't build Kerberos V support
 %bcond_without	libproxy	# don't build libproxy support
-#
+
 Summary:	An HTTP and WebDAV client library
 Summary(pl.UTF-8):	Biblioteka kliencka HTTP i WebDAV
 Name:		neon
@@ -88,6 +89,17 @@ Static neon libraries.
 %description static -l pl.UTF-8
 Statyczne biblioteki neon.
 
+%package apidocs
+Summary:	neon API documentation
+Summary(pl.UTF-8):	Dokumentacja API biblioteki neon
+Group:		Documentation
+
+%description apidocs
+API and internal documentation for neon library.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API biblioteki neon.
+
 %prep
 %setup -q
 
@@ -113,9 +125,6 @@ install -d $RPM_BUILD_ROOT{%{_prefix},%{_mandir}/man1,%{_mandir}/man3}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-mv -f doc/man/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
-mv -f doc/man/*.3 $RPM_BUILD_ROOT%{_mandir}/man3
-
 %find_lang %{name}
 
 %clean
@@ -126,12 +135,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS BUGS ChangeLog NEWS README THANKS TODO doc/*.txt doc/html/*
+%doc AUTHORS BUGS ChangeLog NEWS README THANKS TODO
 %attr(755,root,root) %{_libdir}/libneon.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libneon.so.27
 
 %files devel
 %defattr(644,root,root,755)
+%doc doc/*.txt
 %attr(755,root,root) %{_bindir}/neon-config
 %attr(755,root,root) %{_libdir}/libneon.so
 %{_libdir}/libneon.la
@@ -145,4 +155,10 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libneon.a
+%endif
+
+%if %{with apidocs}
+%files apidocs
+%defattr(644,root,root,755)
+%doc doc/html/*
 %endif
