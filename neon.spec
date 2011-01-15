@@ -68,6 +68,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe neon
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 %{?with_kerberos5:Requires:	heimdal-devel}
+%{?with_libproxy:Requires:	libproxy-devel}
 Requires:	libxml2-devel
 Requires:	openssl-devel >= 0.9.7c
 
