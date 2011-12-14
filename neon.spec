@@ -4,12 +4,13 @@
 %bcond_without	static_libs	# don't build static libraries
 %bcond_without	kerberos5	# don't build Kerberos V support
 %bcond_without	libproxy	# don't build libproxy support
+%bcond_without	pakchois	# don't build pakchois-based PKCS#11 support
 
 Summary:	An HTTP and WebDAV client library
 Summary(pl.UTF-8):	Biblioteka kliencka HTTP i WebDAV
 Name:		neon
 Version:	0.29.6
-Release:	2
+Release:	3
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://www.webdav.org/neon/%{name}-%{version}.tar.gz
@@ -22,6 +23,7 @@ BuildRequires:	automake
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel
 BuildRequires:	openssl-devel >= 0.9.7d
+%{?with_pakchois:BuildRequires:	pakchois-devel}
 BuildRequires:	pkgconfig
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -69,6 +71,7 @@ Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 %{?with_kerberos5:Requires:	heimdal-devel}
 %{?with_libproxy:Requires:	libproxy-devel}
+%{?with_pakchois:Requires:	pakchois-devel}
 Requires:	libxml2-devel
 Requires:	openssl-devel >= 0.9.7c
 
@@ -112,6 +115,7 @@ Dokumentacja API biblioteki neon.
 	--with-ssl \
 	--enable-threadsafe-ssl=posix \
 	--enable-shared \
+	--with%{!?with_pakchois:out}-pakchois \
 	%{!?with_static_libs:--disable-static} \
 	%{!?with_kerberos5:--without-gssapi} \
 	%{!?with_libproxy:--without-libproxy} \
@@ -124,6 +128,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+rm $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %find_lang %{name}
 
@@ -144,7 +150,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc doc/*.txt
 %attr(755,root,root) %{_bindir}/neon-config
 %attr(755,root,root) %{_libdir}/libneon.so
-%{_libdir}/libneon.la
 %{_includedir}/neon
 %{_pkgconfigdir}/neon.pc
 %{_mandir}/man1/neon-config.1*
