@@ -10,7 +10,7 @@ Summary:	An HTTP and WebDAV client library
 Summary(pl.UTF-8):	Biblioteka kliencka HTTP i WebDAV
 Name:		neon
 Version:	0.30.0
-Release:	2
+Release:	3
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://www.webdav.org/neon/%{name}-%{version}.tar.gz
@@ -98,6 +98,9 @@ Statyczne biblioteki neon.
 Summary:	neon API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki neon
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 API and internal documentation for neon library.
