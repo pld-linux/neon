@@ -20,7 +20,7 @@ BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake
 %{?with_kerberos5:BuildRequires:	heimdal-devel}
 %{?with_libproxy:BuildRequires:	libproxy-devel}
-BuildRequires:	libtool >= 2:2.2
+BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	openssl-devel >= 0.9.7d
 %{?with_pakchois:BuildRequires:	pakchois-devel}
@@ -72,9 +72,9 @@ Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 %{?with_kerberos5:Requires:	heimdal-devel}
 %{?with_libproxy:Requires:	libproxy-devel}
-%{?with_pakchois:Requires:	pakchois-devel}
 Requires:	libxml2-devel
 Requires:	openssl-devel >= 0.9.7c
+%{?with_pakchois:Requires:	pakchois-devel}
 
 %description devel
 C header files for the neon library.
@@ -112,7 +112,7 @@ Dokumentacja API biblioteki neon.
 %setup -q
 
 %build
-%{__libtoolize} --install
+%{__libtoolize}
 %{__aclocal} -I macros
 %{__autoconf}
 %configure \
