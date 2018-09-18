@@ -9,12 +9,14 @@
 Summary:	An HTTP and WebDAV client library
 Summary(pl.UTF-8):	Biblioteka kliencka HTTP i WebDAV
 Name:		neon
-Version:	0.30.1
-Release:	8
+Version:	0.30.2
+Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://www.webdav.org/neon/%{name}-%{version}.tar.gz
-# Source0-md5:	231adebe5c2f78fded3e3df6e958878e
+# Source0:	http://www.webdav.org/neon/%{name}-%{version}.tar.gz
+Source0:	https://ftp.osuosl.org/pub/blfs/conglomeration/neon/%{name}-%{version}.tar.gz
+# Source0-md5:	e28d77bf14032d7f5046b3930704ef41
+Patch0:		openssl.patch
 URL:		http://www.webdav.org/neon/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake
@@ -70,11 +72,11 @@ Summary:	Header files for neon
 Summary(pl.UTF-8):	Pliki nagłówkowe neon
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-%{?with_kerberos5:Requires:	heimdal-devel}
-%{?with_libproxy:Requires:	libproxy-devel}
+%{?with_kerberos5:Requires: heimdal-devel}
+%{?with_libproxy:Requires: libproxy-devel}
 Requires:	libxml2-devel
 Requires:	openssl-devel >= 0.9.7c
-%{?with_pakchois:Requires:	pakchois-devel}
+%{?with_pakchois:Requires: pakchois-devel}
 
 %description devel
 C header files for the neon library.
@@ -110,6 +112,7 @@ Dokumentacja API biblioteki neon.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__libtoolize}

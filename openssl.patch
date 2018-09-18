@@ -1,0 +1,11 @@
+--- neon-0.30.2/src/ne_pkcs11.c~	2016-09-30 10:46:00.000000000 +0200
++++ neon-0.30.2/src/ne_pkcs11.c	2018-09-18 14:05:43.019798589 +0200
+@@ -74,6 +74,8 @@ struct ne_ssl_pkcs11_provider_s {
+ 
+ #if defined(RSA_F_RSA_PRIVATE_ENCRYPT)
+ #define PK11_RSA_ERR (RSA_F_RSA_PRIVATE_ENCRYPT)
++#elif defined(RSA_F_RSA_OSSL_PRIVATE_ENCRYPT)
++#define PK11_RSA_ERR (RSA_F_RSA_OSSL_PRIVATE_ENCRYPT)
+ #else
+ #define PK11_RSA_ERR (RSA_F_RSA_EAY_PRIVATE_ENCRYPT)
+ #endif
