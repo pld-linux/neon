@@ -1,10 +1,11 @@
 #
 # Conditional build:
-%bcond_without	apidocs		# do not build and package API docs
-%bcond_without	static_libs	# don't build static libraries
-%bcond_without	kerberos5	# don't build Kerberos V support
-%bcond_without	libproxy	# don't build libproxy support
-%bcond_without	pakchois	# don't build pakchois-based PKCS#11 support
+%bcond_without	apidocs		# API documentation
+%bcond_without	static_libs	# static library
+%bcond_with	gnutls		# GnuTLS instead of OpenSSL for SSL
+%bcond_without	kerberos5	# Kerberos V support
+%bcond_without	libproxy	# libproxy support
+%bcond_without	pakchois	# pakchois-based PKCS#11 support
 
 Summary:	An HTTP and WebDAV client library
 Summary(pl.UTF-8):	Biblioteka kliencka HTTP i WebDAV
@@ -20,15 +21,18 @@ Patch0:		openssl.patch
 URL:		http://www.webdav.org/neon/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake
+%{?with_gnutls:BuildRequires:	gnutls-devel >= 3}
 %{?with_kerberos5:BuildRequires:	heimdal-devel}
 %{?with_libproxy:BuildRequires:	libproxy-devel}
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
-BuildRequires:	openssl-devel >= 0.9.7d
+%{!?with_gnutls:BuildRequires:	openssl-devel >= 0.9.7d}
 %{?with_pakchois:BuildRequires:	pakchois-devel}
 BuildRequires:	pkgconfig
 BuildRequires:	zlib-devel
+%if %{without gnutls}
 %requires_ge_to	openssl openssl-devel
+%endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -72,10 +76,11 @@ Summary:	Header files for neon
 Summary(pl.UTF-8):	Pliki nagłówkowe neon
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+%{?with_gnutls:Requires:	gnutls-devel >= 3}
 %{?with_kerberos5:Requires: heimdal-devel}
 %{?with_libproxy:Requires: libproxy-devel}
 Requires:	libxml2-devel
-Requires:	openssl-devel >= 0.9.7c
+%{!?with_gnutls:Requires:	openssl-devel >= 0.9.7c}
 %{?with_pakchois:Requires: pakchois-devel}
 
 %description devel
@@ -119,15 +124,15 @@ Dokumentacja API biblioteki neon.
 %{__aclocal} -I macros
 %{__autoconf}
 %configure \
-	--with-ssl=openssl \
 	--enable-threadsafe-ssl=posix \
 	--enable-shared \
-	--with-ca-bundle=/etc/certs/ca-certificates.crt \
-	--with%{!?with_pakchois:out}-pakchois \
 	%{!?with_static_libs:--disable-static} \
+	--with-ca-bundle=/etc/certs/ca-certificates.crt \
 	%{!?with_kerberos5:--without-gssapi} \
 	%{!?with_libproxy:--without-libproxy} \
-	--with-libxml2
+	--with-libxml2 \
+	--with-pakchois%{!?with_pakchois:=no} \
+	--with-ssl=%{?with_gnutls:gnutls}%{!?with_gnutls:openssl}
 
 %{__make}
 
