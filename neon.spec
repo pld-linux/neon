@@ -10,14 +10,12 @@
 Summary:	An HTTP and WebDAV client library
 Summary(pl.UTF-8):	Biblioteka kliencka HTTP i WebDAV
 Name:		neon
-Version:	0.30.2
-Release:	2
+Version:	0.31.0
+Release:	1
 License:	LGPL v2+
 Group:		Libraries
-# Source0:	http://www.webdav.org/neon/%{name}-%{version}.tar.gz
-Source0:	https://ftp.osuosl.org/pub/blfs/conglomeration/neon/%{name}-%{version}.tar.gz
-# Source0-md5:	e28d77bf14032d7f5046b3930704ef41
-Patch0:		openssl.patch
+Source0:	http://www.webdav.org/neon/%{name}-%{version}.tar.gz
+# Source0-md5:	7b131576f10ff3c11f7489bcd878778a
 URL:		http://www.webdav.org/neon/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake
@@ -105,7 +103,7 @@ Statyczne biblioteki neon.
 Summary:	neon API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki neon
 Group:		Documentation
-%if "%{_rpmversion}" >= "5"
+%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
 %endif
 
@@ -117,7 +115,6 @@ Dokumentacja API biblioteki neon.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__libtoolize}
@@ -155,7 +152,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS BUGS ChangeLog NEWS README THANKS TODO
+%doc AUTHORS BUGS ChangeLog NEWS README.md THANKS TODO
 %attr(755,root,root) %{_libdir}/libneon.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libneon.so.27
 
