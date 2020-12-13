@@ -10,13 +10,13 @@
 Summary:	An HTTP and WebDAV client library
 Summary(pl.UTF-8):	Biblioteka kliencka HTTP i WebDAV
 Name:		neon
-Version:	0.31.0
+Version:	0.31.2
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://www.webdav.org/neon/%{name}-%{version}.tar.gz
-# Source0-md5:	7b131576f10ff3c11f7489bcd878778a
-URL:		http://www.webdav.org/neon/
+Source0:	https://notroj.github.io/neon/%{name}-%{version}.tar.gz
+# Source0-md5:	c871268f0ba365b71f1ec1bf068d6ab3
+URL:		https://notroj.github.io/neon/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake
 %{?with_gnutls:BuildRequires:	gnutls-devel >= 3}
@@ -27,6 +27,7 @@ BuildRequires:	libxml2-devel
 %{!?with_gnutls:BuildRequires:	openssl-devel >= 0.9.7d}
 %{?with_pakchois:BuildRequires:	pakchois-devel}
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	zlib-devel
 %if %{without gnutls}
 %requires_ge_to	openssl openssl-devel
@@ -103,9 +104,7 @@ Statyczne biblioteki neon.
 Summary:	neon API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki neon
 Group:		Documentation
-%if "%{_rpmversion}" >= "4.6"
-BuildArch:	noarch
-%endif
+%{?noarchpackage}
 
 %description apidocs
 API and internal documentation for neon library.
