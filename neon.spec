@@ -104,7 +104,7 @@ Statyczne biblioteki neon.
 Summary:	neon API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki neon
 Group:		Documentation
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description apidocs
 API and internal documentation for neon library.
