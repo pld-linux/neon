@@ -10,12 +10,12 @@
 Summary:	An HTTP and WebDAV client library
 Summary(pl.UTF-8):	Biblioteka kliencka HTTP i WebDAV
 Name:		neon
-Version:	0.32.2
+Version:	0.32.5
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	https://notroj.github.io/neon/%{name}-%{version}.tar.gz
-# Source0-md5:	09dd5c5e2cf4a0e01b20dd62767a1df7
+# Source0-md5:	7976b1cd67b7228cddb7eb4f39640ac5
 URL:		https://notroj.github.io/neon/
 BuildRequires:	autoconf >= 2.58
 BuildRequires:	automake
